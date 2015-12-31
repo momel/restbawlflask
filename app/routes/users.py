@@ -8,6 +8,7 @@ from flask import (
 )
 
 from app import app
+from app.controllers.userController import UserController
 
 @app.route("/", methods=["GET"])
 def index():
@@ -24,7 +25,9 @@ def get_all_ussers():
         [{"usermane": "ahardy", "id": "3", "role": "ADMIN", "fullname": "Arnold Hardy"},
          {"usermane": "hgudin", "id": "1", "role": "MANAGER", "fullname": "Garry Gudini"},]
     """
-    pass
+    user = UserController()
+    
+    return user.get_all_users()
 
 
 @app.route("/users/current", methods=["GET"])
